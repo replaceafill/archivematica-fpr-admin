@@ -68,6 +68,7 @@ class IDCommandForm(forms.ModelForm):
     class Meta:
         model = fprmodels.IDCommand
         fields = ('tool', 'description', 'config', 'script_type', 'script',)
+        widgets = {'script': forms.Textarea(attrs={'class': 'command'})}
 
 
 # ########## ID RULES ############
@@ -82,6 +83,7 @@ class IDRuleForm(forms.ModelForm):
     class Meta:
         model = fprmodels.IDRule
         fields = ('format', 'command', 'command_output')
+        widgets = {'command_output': forms.Textarea(attrs={'class': 'command'})}
 
 
 # ########## FP RULES ############
@@ -176,3 +178,7 @@ class FPCommandForm(forms.ModelForm):
         fields = ('tool', 'description', 'command', 'script_type',
                   'output_format', 'output_location', 'command_usage',
                   'verification_command', 'event_detail_command')
+        widgets = {
+            'command': forms.Textarea(attrs={'class': 'command'}),
+            'output_location': forms.Textarea(attrs={'class': 'command'}),
+        }
